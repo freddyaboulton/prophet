@@ -27,8 +27,8 @@ class Prophet(object):
 
     Parameters
     ----------
-    growth: String 'linear' or 'logistic' to specify a linear or logistic
-        trend.
+    growth: String 'linear', 'logistic' or 'flat' to specify a linear, logistic or
+        flat trend.
     changepoints: List of dates at which to include potential changepoints. If
         not specified, potential changepoints are selected automatically.
     n_changepoints: Number of potential changepoints to include. Not used
@@ -534,17 +534,17 @@ class Prophet(object):
         prior_scales = {}
         # Makes an index so we can perform `get_loc` below.
         # Strip to just dates.
-        row_index = pd.DatetimeIndex(dates.apply(lambda x: x.date()))
+        row_index = pd.DatetimeIndex(dates.dt.date)
 
-        for _ix, row in holidays.iterrows():
+        for row in holidays.itertuples():
             dt = row.ds.date()
             try:
-                lw = int(row.get('lower_window', 0))
-                uw = int(row.get('upper_window', 0))
+                lw = int(getattr(row, 'lower_window', 0))
+                uw = int(getattr(row, 'upper_window', 0))
             except ValueError:
                 lw = 0
                 uw = 0
-            ps = float(row.get('prior_scale', self.holidays_prior_scale))
+            ps = float(getattr(row, 'prior_scale', self.holidays_prior_scale))
             if np.isnan(ps):
                 ps = float(self.holidays_prior_scale)
             if row.holiday in prior_scales and prior_scales[row.holiday] != ps:
