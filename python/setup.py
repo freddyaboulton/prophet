@@ -321,7 +321,7 @@ with open("requirements.txt", "r") as f:
     install_requires = f.read().splitlines()
 
 setup(
-    name="prophet",
+    name="prophet-freddy",
     version="1.0.1",
     description="Automatic Forecasting Procedure",
     url="https://facebook.github.io/prophet/",
