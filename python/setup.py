@@ -322,7 +322,7 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="prophet-freddy",
-    version="1.0.1",
+    version="1.0.2",
     description="Automatic Forecasting Procedure",
     url="https://facebook.github.io/prophet/",
     author="Sean J. Taylor <sjtz@pm.me>, Ben Letham <bletham@fb.com>",
