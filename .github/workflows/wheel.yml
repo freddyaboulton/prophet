@@ -219,7 +219,7 @@ jobs:
       - name: Publish the wheels on PyPI
         run: |
           ls -la ${{ github.workspace }}/wheelhouse/python/wheelhouse
-          twine upload ${{ github.workspace }}/wheelhouse/python/wheelhouse/*.whl --skip-existing --repository-url https://test.pypi.org/legacy/
+          twine upload ${{ github.workspace }}/wheelhouse/python/wheelhouse/*.whl --skip-existing --repository-url https://upload.pypi.org/legacy/
           twine upload ${{ github.workspace }}/wheelhouse/python/wheelhouse/*.whl --skip-existing --repository-url https://test.pypi.org/legacy/
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
