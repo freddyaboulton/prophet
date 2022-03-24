@@ -106,7 +106,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ["ubuntu-latest"]
+        os: ["macos-latest", "ubuntu-latest"]
         python-version: [3.8]
         architecture: ["x64"]
       fail-fast: false
@@ -216,13 +216,11 @@ jobs:
           name: wheels
           path: ./wheelhouse
     
-      - name: Publish the source distribution on PyPI
+      - name: Publish the wheels on PyPI
         run: |
           ls -la ${{ github.workspace }}/wheelhouse/python/wheelhouse
-          # We prefer to release wheels before source because otherwise there is a
-          # small window during which users who pip install pywt will require compilation.
           twine upload ${{ github.workspace }}/wheelhouse/python/wheelhouse/*.whl --skip-existing --repository-url https://test.pypi.org/legacy/
-          # twine upload ${{ github.workspace }}/dist/PyWavelets-${PYWT_VERSION:1}.tar.gz
+          twine upload ${{ github.workspace }}/wheelhouse/python/wheelhouse/*.whl --skip-existing --repository-url https://test.pypi.org/legacy/
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TWINE_TOKEN }}
