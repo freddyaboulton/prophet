@@ -321,12 +321,12 @@ with open("requirements.txt", "r") as f:
     install_requires = f.read().splitlines()
 
 setup(
-    name="prophet",
-    version="1.0.1",
-    description="Automatic Forecasting Procedure",
-    url="https://facebook.github.io/prophet/",
-    author="Sean J. Taylor <sjtz@pm.me>, Ben Letham <bletham@fb.com>",
-    author_email="sjtz@pm.me",
+    name="prophet-prebuilt",
+    version="1.0.2",
+    description="Facebook Prophet with pre-built wheels for Linux, Mac, Windows",
+    url="https://github.com/freddyaboulton/prophet",
+    author="Freddy A. Boulton",
+    author_email="alfonsoboulton@gmail.com",
     license="MIT",
     packages=find_packages(),
     install_requires=install_requires,
