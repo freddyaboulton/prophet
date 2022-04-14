@@ -6,6 +6,8 @@ I also removed the pystan requirement and will only install CMDSTAN and use CMDS
 
 ## Installation
 
+Wheels are only published for python 3.8. Since we are not using pystan, it should be possible to support python 3.9 and 3.10 but I haven't tested that yet. 
+
 ```shell
 pip install prophet-prebuilt
 ```
